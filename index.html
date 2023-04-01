@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Image Tooltip Example</title>
+	<style>
+		.container {
+			position: relative;
+			display: inline-block;
+		}
+		
+		.tooltip {
+			position: absolute;
+			top: -30px;
+			left: 0;
+			display: none;
+			padding: 5px;
+			background-color: #000;
+			color: #fff;
+			font-size: 12px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+	  <img src="image.jpg" class="image" height="420" width="840" alt="Your Image">
+	  <div class="tooltip"></div>
+	</div>
+
+	<script>
+		const image = document.querySelector('.image');
+		const tooltip = document.querySelector('.tooltip');
+		
+		image.addEventListener('mousemove', (e) => {
+		tooltip.style.left = e.clientX + 'px';
+		tooltip.style.top = e.clientY - tooltip.offsetHeight - 10 + 'px';
+		tooltip.textContent = `X: ${e.offsetX}, Y: ${e.offsetY}`;
+		});
+		
+		image.addEventListener('mouseover', () => {
+		tooltip.style.display = 'block';
+		});
+		
+		image.addEventListener('mouseout', () => {
+		tooltip.style.display = 'none';
+		});
+
+	</script>
+</body>
+</html>
